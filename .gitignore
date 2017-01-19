@@ -1,0 +1,12 @@
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.lof
+*.log
+*.lot
+*.out
+*.swp
+*.toc
+.DS_Store
+Thumbs.db
