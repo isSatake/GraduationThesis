@@ -96,27 +96,33 @@ https://gyaon.herokuapp.com/\{ユーザID\}
 \end{itembox}
 
 \subsubsection{Gyaonキー}
-%PCの任意のキーをGyaonキーに割り当てる
-%録音ボタンにしてしまう
-%Gyaonキー\footnote{\textsf{Mac用アプリケーションをhttps://github.com/stkay/GyaonWithKarabinerにて配布中}}
-%を利用すれば、アプリケーションを起動することなく録音可能である。
-%PCの任意のキーを録音ボタンと同じように使うことができる
-%長押し録音、即アップロード
-%⌘+FNの画像
+Gyaonキーアプリケーション\footnote{\textsf{Mac用アプリケーションをhttps://github.com/stkay/GyaonWithKarabinerにて配布中}}
+を利用すれば、PCの任意のキーを録音ボタンに設定できる。
+これにより、アプリケーションを起動することなく録音可能である。
+Webアプリケーションと同様に長押し録音、自動アップロードが行われる。
+%キーボードじゃなくて、他の汎用なボタンでもいいよね
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=9cm]{images/key.png}
+\caption{著者のPCでは、commandキー + fnキーを録音専用キーとして設定している。}
+\label{key}
+\end{figure}
 
 \subsubsection{Gyaonペダル}
-%Gyaonキーと同じように、
-%PCすら不要
+USB接続の汎用なペダル(図\ref{pedal})を接続すれば、楽器演奏/運転中/料理中といった手を使えないシーンでも
+ハンズフリー録音が可能となる。
+また、ペダルとマイクを接続したRaspberry Pi等を複数用意し、録音専用コンピュータとしてセットアップすることで、
+ユビキタスな録音環境を自宅や研究室等に構築可能である。
 
-%  [satake 2016/10/24発表資料]
-%  ハンズフリーで録音したいときに有用
-%   楽器演奏
-%   運転中
-%   料理中？
-%  Gyaon専用コンピュータとしてラズパイとかを繋げておけば小さいのでいろいろな所に置ける
-%  ペダルはUSB接続の汎用品でいい
-%  家とか研究室とかにばら撒いて使う
-%   ペダルの画像
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=9cm]{images/pedal.png}}
+\caption{ペダルの例}
+\label{pedal}
+\end{figure}
+
+%楽器弾きながらペダル踏んでる画像があるといいかも
 
 \subsection{Android版}
 %録音のみ可能
