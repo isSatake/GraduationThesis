@@ -7,7 +7,7 @@
 
 \section{設計指針}
 
-「Gyaon」では
+Gyaonでは
 \begin{itemize}
 \item 単純な録音操作
 \item 音声管理の簡単さ
@@ -65,9 +65,9 @@ Scrapbox\footnote{\textsf{https://scrapbox.io/}}ではオーディオ記法を�
 \end{figure}
 
 \subsubsection{プリレコーディング機能}
-図\ref{button}のpre-recordingスイッチをONにするとアプリ起動中は常時録音し、
+図\ref{button}の「pre-recording」スイッチをONにするとアプリ起動中は常時録音し、
 録音ボタンを押す10秒前から音声を記録できる。
-もし突然撮りたい音が聞こえてきた場合でも逃さず録音することが可能である。
+もし突然録りたい音が聞こえてきた場合でも逃さず録音することが可能である。
 %今いいこと言った！を逃さない
 %急に面白い音が聞こえてきても逃さない
 
@@ -115,6 +115,10 @@ USB接続の汎用なペダル(図\ref{pedal})を接続すれば、楽器演奏/
 また、ペダルとマイクを接続したRaspberry Pi等を複数用意し、録音専用コンピュータとしてセットアップすることで、
 ユビキタスな録音環境を自宅や研究室等に構築可能である。
 
+%冷蔵庫の前に置いて在庫管理、買い物メモ
+%トイレ
+%キーボードが使えないけどよくいる場所
+
 \begin{figure}[H]
 \centering
 \fbox{\includegraphics[width=9cm]{images/pedal.png}}
@@ -125,18 +129,30 @@ USB接続の汎用なペダル(図\ref{pedal})を接続すれば、楽器演奏/
 %楽器弾きながらペダル踏んでる画像があるといいかも
 
 \subsection{Android版}
-%録音のみ可能
-%PC版と同じ録音インターフェースを持つ
-%ユーザIDを設定するとそこにアップする
-%同じIDを入れれば、スマホで撮った音をPCでも聞ける
-%図のように、画面に録音ボタンを常駐させておけるのでアプリを起動しなくても録音できる
-%撮り逃がさない
-%持ち運べるので、外で環境音を撮るのに向いてる
-%鳥のさえずり
-%川のせせらぎ
-%外で聞いた面白音声を共有する
-%電車遅延のアナウンスとか
-%街頭演説とか
 
-%  アプリの画面のスクショ
-%  常駐ボタンのスクショ
+\subsubsection{基本操作}
+Android用Gyaonアプリケーションは録音のみ可能で、PC版と同様に長押し録音/自動アップロードが利用できる。(図\ref{app})。
+「Your ID」には任意のユーザIDを入力する。
+PC版で使用しているユーザIDを入力すれば、スマートフォンでの録音をPCでも聞けるようになる。
+
+\subsubsection{録音ボタンを常駐させる}
+図\ref{app}の「STARTSERVICE」ボタンを押すと、録音ボタンをスマートフォン上に常駐させることができる(図\ref{home})。
+
+\subsubsection{利用シーン}
+スマートフォンを持ち運べる環境ならいつでもどこでも録音可能である。
+外出先で思いついたことを記録したり、
+鳥のさえずり/川のせせらぎといった環境音や、アナウンス/街頭演説といった情報を共有する用途にも活用できる。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6cm]{images/app.png}
+\caption{アプリケーションの起動画面}
+\label{app}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6cm]{images/home.png}
+\caption{録音ボタンが配置されたAndroidのホーム画面}
+\label{home}
+\end{figure}
