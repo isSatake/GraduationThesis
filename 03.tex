@@ -20,23 +20,83 @@ Gyaonは，ユーザが実際に録音/再生するためのクライアント�
 %簡単な図を描きたい
 
 \section{サーバ}
-サーバはNode.jsとExpressによって実装されている．
-音声データの保存をAmazon S3
+サーバはNode.js\footnote{\textsf{https://nodejs.org}}
+とそのWebアプリケーションフレームワークであるExpress\footnote{\textsf{http://expressjs.com/ja/}}
+によって実装されている．音声データの保存をAmazon S3
 \footnote{\textsf{Amazon Web Servicesによって提供されるオンラインストレージサービス．https://aws.amazon.com/jp/s3/}}，
 DB管理をmLab\footnote{\textsf{MongoDBベースのクラウドDBサービス．https://mlab.com/}}にて行っている．
 
-\section{PC版}
-PC版GyaonはHTML/CSS/JavaScriptで実装されており，ブラウザ上のWebアプリケーションとして動作する.
-各機能の実装について述べる．
-特筆すべき実装
-詳細な実装
+\subsection{DBスキーマ}
+
+DBでは以下のようなスキーマを定義し，音声データを管理している．
+
+\vspace{4mm}
+\begin{lstlisting}
+var soundSchema = mongoose.Schema({
+    lastmodified: Date,     /* 更新時刻 */
+    user: String,           /* ユーザID */
+    name: String,           /* ファイル名 */
+    key: String,            /* S3key */
+    size: Number,           /* ファイルサイズ */
+    time: Number,           /* 再生時間 */
+    comment: String,        /* コメント */
+    location_x: Number,     /* 位置情報 */
+    location_y: Number
+})
+\end{lstlisting}
+
+\section{PC版クライアント}
+PC版クライアントはHTML/CSS/JavaScriptで実装されており，ブラウザ上のWebアプリケーションとして動作する.
+%各機能の実装について述べる．
+%特筆すべき実装
+%詳細な実装
+
+\subsection{WebAudioAPI}
+%WebAudioAPIを解説する
+録音/再生といった主要な音声機能は，
+HTML5 audio\footnote{\textsf{https://www.w3.org/TR/html5/embedded-content-0.html\#the-audio-element}}
+並びにWebAudioAPI\footnote{\textsf{https://www.w3.org/TR/webaudio/}}によって実装されている．
+
+HTML5 audioはHTMLドキュメント内に音声を埋め込むことができ，以下のようなAudio要素を宣言することで利用できる．
+
+\vspace{4mm}
+\begin{lstlisting}
+<audio src="/test/audio.ogg"></audio>
+\end{lstlisting}
+
+WebAudioAPIは高度な音声処理や音声合成を行えるJavaScriptAPIであり，
+Audio要素を操作したり，エフェクトを加えることができる．
+
+\subsection{音声リストの同期}
+複数のユーザが同じユーザIDを使用していても，音声リストはリアルタイムに同期される．
+これはNode.jsのWebSocketライブラリ「Socket.IO\footnote{\textsf{http://socket.io}}」によって実装されており，
+サーバに音声がアップロードされると，音声リストの更新情報がブラウザに通知される．
+
+\subsection{プリレコーディング機能}
+%shift/pushしている部分のコードを貼る
+
+%録音ボタンを押す前からの音声を撮れる
+%音声を入れてる配列の操作で
+%〜は，以下のように実装されている
+
+\vspace{4mm}
+\begin{lstlisting}
+preRecScriptProcessor.onaudioprocess = (event) => {
+    const channel = event.inputBuffer.getChannelData(0)
+    if(preRecAudioBufferArray.length * BUFFER_SIZE > SAMPLE_RATE * PREREC_SEC) {
+        preRecAudioBufferArray.shift()
+    }
+    preRecAudioBufferArray.push(new Float32Array(channel))
+}
+\end{lstlisting}
 
 \subsection{Gyaonキー}
-Karabinerを使っている
-録音するシェルスクリプトを叩かせている
+%Karabinerを使っている
+%録音するシェルスクリプトを叩かせている
+%スクリプト本体やkarabiner設定ファイルを貼る
 
-\section{Android版}
-Android版GyaonはJavaで実装されており，通常のAndroidアプリケーションとして動作する．
+\section{Android版クライアント}
+Android版クライアントはJavaで実装されており，通常のAndroidアプリケーションとして動作する．
 %常駐型の録音ボタンは，現状serviceを使っているが
 %serviceで常駐
 %常駐ボタンが邪魔だったりするので，他の方法を考えたい
