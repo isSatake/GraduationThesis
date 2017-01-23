@@ -6,7 +6,9 @@
 \newpage
 
 \section{システム構成}
-Gyaonは，〜からなる．構成図を図\ref{}に示す．
+Gyaonは，ユーザが実際に録音/再生するためのクライアントアプリケーションと，
+アップロードされた音声を保存/管理するサーバから構成される．構成図を図\ref{}に示す．
+
 
 %サーバ
 %    ストレージ
@@ -18,15 +20,14 @@ Gyaonは，〜からなる．構成図を図\ref{}に示す．
 %簡単な図を描きたい
 
 \section{サーバ}
-%音声データの保存にS3
-%音声データの管理にmongoDB
-%音声データのアップロード受付/DB操作/ストレージへの保存をサーバが担う
+サーバはNode.jsとExpressによって実装されている．
+音声データの保存をAmazon S3，管理をmLabにて行っている．
 
 \section{PC版}
-%PC版のGyaonクライアントはHTML/CSS/JavaScriptで実装されており，ブラウザ上のWebアプリケーションとして動作する.
+PC版GyaonはHTML/CSS/JavaScriptで実装されており，ブラウザ上のWebアプリケーションとして動作する.
 
 \section{Android版}
-%Android版のGyaonクライアントはJavaで実装されており，通常のAndroidアプリケーションとして動作する．
+Android版GyaonはJavaで実装されており，通常のAndroidアプリケーションとして動作する．
 %常駐型の録音ボタンは，現状serviceを使っているが
 %serviceで常駐
 %常駐ボタンが邪魔だったりするので，他の方法を考えたい
