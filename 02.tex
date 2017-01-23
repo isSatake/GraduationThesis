@@ -5,15 +5,28 @@
 
 \newpage
 
-\section{設計指針}
+\section{設計}
 
-Gyaonでは
+既存の録音システムに見られる不便を解消するため，
+
 \begin{enumerate}
 \item 単純な録音操作
-\item 音声管理の簡単さ
+\item 再生/管理の簡単さ
 \item 他システムからの音声の利用のしやすさ
 \end{enumerate}
-を優先した設計を行うことで録音の不便を解消し，音声の有効活用を促すシステムを目指している．
+
+を実現する録音システム「Gyaon」を設計した．上記1〜3を実現するため，具体的には
+%を優先したシステムの実現を目標とする．
+%Gyaonでは
+
+\begin{enumerate}
+\item ボタンを押している間録音する
+\item マウスオーバーで再生する
+\item 簡単にコメントを書ける
+\item 録音後すぐにアップロードして，URLを取得できる
+\end{enumerate}
+
+ようなアプリケーションを実装した．
 
 \section{利用例}
 様々な利用シーンに対応するため，PC用Webアプリケーションおよび
@@ -21,7 +34,7 @@ Androidスマートフォン用アプリケーション
 にてGyaonシステムが利用できる．
 それぞれのプラットフォームにおける利用例を述べる．
 
-\subsection{PC版}
+\subsection{PC版Gyaonアプリケーション}
 
 \subsubsection{基本操作}
 PC版Gyaonはhttps://gyaon.herokuapp.com/にて試験運用しており，Webブラウザで動作する．
@@ -63,19 +76,6 @@ URLを経由して他人に音声を渡すことも可能である．
 もし突然録りたい音が聞こえてきた場合でも後から録音することが可能である．
 %今いいこと言った！を逃さない
 %急に面白い音が聞こえてきても逃さない
-
-\subsubsection{地図機能}
-音声データに紐付けられた位置情報をもとに，音声を地図上にマッピングして一覧できる
-\footnote{\textsf{地図機能はhttps://gyaon.herokuapp.com/map/にて試験運用中}}．
-音声の録音場所が分かることから，その場所の雰囲気や，
-景色がいい/この店は美味しいといったその場所ならではの有用な情報を記録/共有できる．
-
-\begin{figure}[H]
-\centering
-\fbox{\includegraphics[width=9cm]{images/map.png}}
-\caption{地図機能}
-\label{map}
-\end{figure}
 
 \subsubsection{IDの共有}
 GyaonではIDごとに音声を管理しており，ログインは不要で，URL末尾でユーザIDを指定できる．
@@ -121,7 +121,21 @@ USB接続の汎用なペダル(図\ref{pedal})を接続すれば，楽器演奏�
 
 %楽器弾きながらペダル踏んでる画像があるといいかも
 
-\subsection{Android版}
+\subsubsection{地図機能}
+https://gyaon.herokuapp.com/map/ではGyaonの地図機能を利用できる．
+音声データに紐付けられた位置情報をもとに，音声を地図上にマッピングして一覧できるものである．
+音声の録音場所が分かることから，その場所の雰囲気や，
+景色がいい/この店は美味しいといったその場所ならではの有用な情報を記録/共有できる．
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[width=9cm]{images/map.png}}
+\caption{地図機能}
+\label{map}
+\end{figure}
+
+
+\subsection{Android版Gyaonアプリケーション}
 
 \subsubsection{基本操作}
 Android用Gyaonアプリケーションは録音のみ可能で，PC版と同様に押している間録音/自動アップロードが利用できる．(図\ref{app})．
